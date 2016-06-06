@@ -3,8 +3,8 @@ title: "'Hot Rocks That Shoot Ghost Bullets': Native American Perceptions of a N
 abstract: Environmental justice concerns are raised when environmental risks and hazards are inequitably distributed across society. Native American populations have long been at the center of environmental justice disputes, however relatively little quantitative research has examined how Native Americans view the risks related to the siting of a potentially hazardous facility. Combining 35 statewide surveys collected from 1990 to 2001, the following study explores the risk perceptions of Native American populations in New Mexico regarding the storage of nuclear waste. We find that Native Americans tend to be less supportive of the Waste Isolation Pilot Plant (WIPP) facility, and have higher perceptions of risk than white respondents. We also explore intraracial variation within Native American populations and find that older males tended to be more supportive of WIPP, and perceive less risk. These findings help in understanding how Native Americans perceive risk as it relates to environmental issues.
 ...
 
-```{r, include=FALSE}
-wipp <- read.csv("wippDAT.csv")
+```{r, echo=FALSE}
+wipp <- read.csv("NMdata.csv")
 ``` 
 
 # Introduction
@@ -66,7 +66,7 @@ Finally, when examining the perceptions of Native Americans toward WIPP we will 
 # Data and Methods 
 
 The data that will be used comes from a collection of 35 statewide
-surveys conducted in New Mexico, between 1990 and 2001, by the
+surveys conducted in New Mexico, between 1991 and 2001, by the
 University of New Mexico's Institute for Public Policy (IPP). These
 surveys were collected quarterly until 1995 and were subsequently
 administered twice a year. For the purposes of analysis, the surveys
@@ -113,28 +113,8 @@ __Table \ref{tab:wipp2} about here__
 As expected, Native Americans, and other racial minorities rated the risks of transportation as higher, on average, than white respondents. Also as expected, older, male, higher educated, higher income respondents were less likely than other demographic groups to perceive risk associated with transportation to the WIPP facility. As respondents became more conservative, Republican, and had a positive view of New Mexico government performance, they were, on average, less likely to view transportation as risky. Finally, those concerned with environmental quality were more likely to see the transport of materials to WIPP as risky. 
 
 To illustrate the results, we ran 10,000 simulations of the WIPP support and
-transportation risk models. The simulations were used to estimate the model parameters [@king_making_2000; @gelman_data_2006].^[Based on the point estimates and the variance-covariance estimates from the models, the simulations take 10,000 random number draws to estimate the parameters.] The parameter estimates were then used to estimate the predicted probability of support for WIPP and the level of risk, from one to five, associated with the transportation of material to WIPP. The model simulations allow for the illustration of model uncertainty relative to the models predictions. Models were estimated for Native Americans, White males, and other minorities. The other variables were held constant at their mean, and the year variable was held constant at its median (1996). The models are shown in Figure \ref{fig:sims}.
+transportation risk models. The simulations were used to estimate the model parameters [@king_making_2000; @gelman_data_2007].^[Based on the point estimates and the variance-covariance estimates from the models, the simulations take 10,000 random number draws to estimate the parameters.] The parameter estimates were then used to estimate the predicted probability of support for WIPP and the level of risk, from one to five, associated with the transportation of material to WIPP. The model simulations allow for the illustration of model uncertainty relative to the models predictions. Models were estimated for Native Americans, White males, and other minorities. The other variables were held constant at their mean, and the year variable was held constant at its median (1996). The models are shown in Figure \ref{fig:sims}.
 
-
-```{r, include=FALSE}
-source("nativeSIMScode.R")
-pdf("supsims.pdf")
-plot(density(white.sim1.P), xlim=c(0.2,0.8), ylim=c(0,40), main="", xlab="Density Curves of the Predicted Probabilities of WIPP Support")
-lines(density(native.sim1.P), lty=2)
-lines(density(minority.sim1.P), lty=3)
-legend("topleft", c("White Males","Native Americans","Other Minorities"), lty=1:3, bty="n")
-dev.off()
-```
-
-```{r, include=FALSE}
-pdf("risksims.pdf")
-plot(density(white.sim2), xlim=c(1,5), ylim=c(0,15), xaxt="n", main="", xlab="Density Curves of Perceived Risk of Transportation to WIPP")
-axis(side = 1, at=1:5, label=c("No Risk","2","3","4","Extreme Risk"))
-lines(density(native.sim2), lty=2)
-lines(density(minority.sim2), lty=3)
-legend("topleft", c("White Males","Native Americans","Other Minorities"), lty=1:3, bty="n")
-dev.off()
-```
 
 __Figure \ref{fig:sims} about here__ 
 
@@ -143,11 +123,6 @@ As can be seen in Figure \ref{fig:supsims}, the predicted probability of support
 tended to perceive the risks associated with transportation as less, at a mean of `r round(mean(white.sim2),3)` (`r round(range(white.sim2),3)`), than Native American and minority respondents with means of `r round(mean(native.sim2),3)` (`r round(range(native.sim2),3)`) and `r round(mean(minority.sim2),3)` (`r round(range(minority.sim2),3)`) respectively. As show, there is again overlap between Native Americans and other minorities concerning transportation risk, indicating no difference in risk perceptions between those two groups. 
 
 ## Native Americans 
-
-```{r, include=FALSE}
-library(car)
-wipp$native.nw <- recode(wipp$county,                                "16=1;18=1;22=1;24=1;25=1;else=0")
-```
 
 While a large body of research has shown that white males tend to be more accepting of risk than racial minorities, less work has examined differences concerning risk perceptions _within_ minority groups, particularly Native Americans. To examine differences in risk perceptions between Native Americans, we use only those respondents that self-identified as American Indian. Building on @rivers_simple_2010, we expect Native American males to be more supportive of WIPP than Native American females (H2). In addition, we expect differences among tribes, particularly the Navajo given their history of adverse effects resulting from uranium mining (H3). As a proxy for Navajo tribal affiliation, we code the five counties (Los Alamos, McKinley, Rio Arriba, Sandoval, and San Juan) in the northwest corner of the state that overlap Navajo territory as one and all other counties a zero. The mean for the northwest county variable is `r round(mean(wipp$native.nw,na.rm=T),3)`, which indicates that `r round(mean(wipp$native.nw,na.rm=T),3)*100`% of Native American respondents live in those counties. As before, we first examine support for WIPP, and the results are shown in Table \ref{tab:native1}.
 
@@ -175,192 +150,44 @@ There are several avenues for future research that deserve additional attention 
 
 \newpage
 
-```{r, include=FALSE}
+```{r, echo=FALSE, message=FALSE, results='asis'}
+library(MASS)
+library(stargazer)
 wippSUP <- glm(wipp1.dic ~
-           age+gender+educ+inc50+minority+native+
+           age+gender+educ+inc50+native+aa+hisp+
            ideology+rep+env_bigprob+avg_gov_trust+as.factor(year),
            data=wipp, family=binomial())
-library("apsrtable")
-apsrtable(wippSUP, stars="default", digits=3, model.names=c("WIPP Support"), coef.names=c("Intercept","Age","Male","Education","Income","Minority","Native American","Ideology","Republican", "Environmental Concern","NM Government Performance"), omitcoef=list(12:21), caption=c("Logit Estimates of Support for the WIPP Facility"), label="tab:wipp1", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
-```
-
-\begin{table}[!h] \centering \footnotesize
-\caption{Logit Estimates of Support for the WIPP Facility}
-\label{tab:wipp1} 
-\begin{tabular}{ l D{.}{.}{3} } 
-\hline 
-  & \multicolumn{ 1 }{ c }{ WIPP Support } \\ \hline
- %                         & WIPP Support \\ 
-Intercept                 & -2.898 ^{***}\\ 
-                          & (0.135)      \\ 
-Age                       & 0.015 ^{***} \\ 
-                          & (0.001)      \\ 
-Male                      & 0.825 ^{***} \\ 
-                          & (0.035)      \\ 
-Education                 & 0.014        \\ 
-                          & (0.013)      \\ 
-Income                    & 0.131 ^{***} \\ 
-                          & (0.011)      \\ 
-Minority                  & -0.466 ^{***}\\ 
-                          & (0.039)      \\ 
-Native American           & -0.636 ^{***}\\ 
-                          & (0.097)      \\ 
-Ideology                  & 0.118 ^{***} \\ 
-                          & (0.012)      \\ 
-Republican                & 0.446 ^{***} \\ 
-                          & (0.039)      \\ 
-Environmental Concern     & -0.722 ^{***}\\ 
-                          & (0.118)      \\ 
-NM Government Performance & 0.257 ^{***} \\ 
-                          & (0.032)       \\
- $N$                       & 15818        \\ 
-AIC                       & 19620.799    \\ 
-BIC                       & 20264.987    \\ 
-$\log L$                 & -9726.399     \\ \hline
- \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
-\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
-\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
-\end{tabular} 
- \end{table}
-
-```{r, include=FALSE}
 wippRSK <- lm(wipp2 ~
-          age+gender+educ+inc50+minority+native+
+          age+gender+educ+inc50+native+aa+hisp+
           ideology+rep+env_bigprob+avg_gov_trust+as.factor(year), data=wipp)
-apsrtable(wippRSK, stars="default", digits=3, model.names=c("Transportation Risk"), coef.names=c("Intercept","Age","Male","Education","Income","Minority","Native American","Ideology","Republican", "Environmental Concern", "NM Government Performance"), omitcoef=list(12:21), caption=c("OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility"), label="tab:wipp2", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
+stargazer(wippSUP, wippRSK, title="Logit and OLS Analysis of WIPP Safety and Transportation Risk", align=TRUE, dep.var.caption = "WIPP Opinions", dep.var.labels=c("WIPP Safety", "Transportation Risk"), omit="year", covariate.labels=c("Age","Male","Education","Income","Native American","African-American","Hispanic","Ideology","Republican", "Environmental Concern","NM Government Performance"),omit.stat=c("f","rsq","ser"), star.cutoffs=c(0.05,0.01,0.001), label=c("tab:fullSampleModels"), no.space=TRUE, header=FALSE)
 ```
-
-\newpage
-\begin{table}[!h] \centering \footnotesize
-\caption{OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility}
-\label{tab:wipp2} 
-\begin{tabular}{ l D{.}{.}{3} } 
-\hline 
-  & \multicolumn{ 1 }{ c }{ Transportation Risk } \\ \hline
- %                         & Transportation Risk\\ 
-Intercept                 & 4.830 ^{***}       \\ 
-                          & (0.079)            \\ 
-Age                       & -0.008 ^{***}      \\ 
-                          & (0.001)            \\ 
-Male                      & -0.596 ^{***}      \\ 
-                          & (0.021)            \\ 
-Education                 & -0.036 ^{***}      \\ 
-                          & (0.008)            \\ 
-Income                    & -0.085 ^{***}      \\ 
-                          & (0.007)            \\ 
-Minority                  & 0.365 ^{***}       \\ 
-                          & (0.024)            \\ 
-Native American           & 0.500 ^{***}       \\ 
-                          & (0.058)            \\ 
-Ideology                  & -0.062 ^{***}      \\ 
-                          & (0.007)            \\ 
-Republican                & -0.280 ^{***}      \\ 
-                          & (0.024)            \\ 
-Environmental Concern     & 0.443 ^{***}       \\ 
-                          & (0.072)            \\ 
-NM Government Performance & -0.146 ^{***}      \\ 
-                          & (0.020)             \\
- $N$                       & 13409              \\ 
-$R^2$                     & 0.174              \\ 
-adj. $R^2$                & 0.173              \\ 
-Resid. sd                 & 1.212               \\ \hline
- \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
-\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
-\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
-\end{tabular} 
- \end{table}
 
 ```{r, include=FALSE}
-wipp1.native <- glm(wipp1.dic ~ age+gender+educ+inc50+ideology+rep +env_bigprob+avg_gov_trust+native.nw+as.factor(year),data=subset(wipp, native==1), family=binomial())
-library(apsrtable)
-apsrtable(wipp1.native, stars="default", digits=3, model.names=c("WIPP Support"), coef.names=c("Intercept","Age","Male","Education","Income","Ideology","Republican", "Environmental Concern", "NM Government Performance", "Northwest County"), omitcoef=list(11:20), caption=c("Logit Estimates of Support for the WIPP Facility: Native Americans"), label="tab:native1", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
+source("nativeSIMScode.R")
+pdf("supsims.pdf")
+plot(density(white.sim1.P), xlim=c(0.2,0.8), ylim=c(0,40), main="", xlab="Density Curves of the Predicted Probabilities of WIPP Considered Safe")
+lines(density(native.sim1.P), lty=2)
+lines(density(minority.sim1.P), lty=3)
+legend("topleft", c("White Males","Native Americans","Other Minorities"), lty=1:3, bty="n")
+dev.off()
 ```
-
-\newpage
-\begin{table}[!h] \centering \footnotesize
-\caption{Logit Estimates of Support for the WIPP Facility: Native Americans}
-\label{tab:native1} 
-\begin{tabular}{ l D{.}{.}{3} } 
-\hline 
-  & \multicolumn{ 1 }{ c }{ WIPP Support } \\ \hline
- %                         & WIPP Support \\ 
-Intercept                 & -2.337 ^{***}\\ 
-                          & (0.693)      \\ 
-Age                       & 0.021 ^{**}  \\ 
-                          & (0.007)      \\ 
-Male                      & 0.441 ^*     \\ 
-                          & (0.193)      \\ 
-Education                 & -0.049       \\ 
-                          & (0.071)      \\ 
-Income                    & 0.164 ^{**}  \\ 
-                          & (0.063)      \\ 
-Ideology                  & 0.054        \\ 
-                          & (0.061)      \\ 
-Republican                & 0.549 ^*     \\ 
-                          & (0.223)      \\ 
-Environmental Concern     & -0.142       \\ 
-                          & (0.578)      \\ 
-NM Government Performance & 0.055        \\ 
-                          & (0.181)      \\ 
-Northwest County          & -0.247       \\ 
-                          & (0.201)       \\
- $N$                       & 566          \\ 
-AIC                       & 702.223      \\ 
-BIC                       & 1049.311     \\ 
-$\log L$                 & -271.112      \\ \hline
- \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
-\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
-\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
-\end{tabular} 
- \end{table}
 
 ```{r, include=FALSE}
-wipp2.native <- lm(wipp2 ~ age+gender+educ+inc50+ideology+rep+env_bigprob +avg_gov_trust+native.nw+as.factor(year),data=subset(wipp, native==1))
-apsrtable(wipp2.native, stars="default", digits=3, model.names=c("Transportation Risk"), coef.names=c("Intercept","Age","Male","Education","Income","Ideology","Republican", "Environmental Concern","NM Government Performance","Northwest County"), omitcoef=list(11:20), caption=c("OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility: Native Americans"), label="tab:native2", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
+pdf("risksims.pdf")
+plot(density(white.sim2), xlim=c(1,5), ylim=c(0,15), xaxt="n", main="", xlab="Density Curves of Perceived Risk of Transportation to WIPP")
+axis(side = 1, at=1:5, label=c("No Risk","2","3","4","Extreme Risk"))
+lines(density(native.sim2), lty=2)
+lines(density(minority.sim2), lty=3)
+legend("topleft", c("White Males","Native Americans","Other Minorities"), lty=1:3, bty="n")
+dev.off()
 ```
 
 \newpage
-\begin{table}[!h] \centering \footnotesize
-\caption{OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility: Native Americans}
-\label{tab:native2} 
-\begin{tabular}{ l D{.}{.}{3} } 
-\hline 
-  & \multicolumn{ 1 }{ c }{ Transportation Risk } \\ \hline
- %                         & Transportation Risk\\ 
-Intercept                 & 4.974 ^{***}       \\ 
-                          & (0.442)            \\ 
-Age                       & -0.020 ^{***}      \\ 
-                          & (0.004)            \\ 
-Male                      & -0.305 ^*          \\ 
-                          & (0.127)            \\ 
-Education                 & 0.029              \\ 
-                          & (0.046)            \\ 
-Income                    & -0.092 ^*          \\ 
-                          & (0.040)            \\ 
-Ideology                  & 0.013              \\ 
-                          & (0.040)            \\ 
-Republican                & -0.254             \\ 
-                          & (0.154)            \\ 
-Environmental Concern     & 0.745 ^\dagger    \\ 
-                          & (0.395)            \\ 
-NM Government Performance & -0.108             \\ 
-                          & (0.119)            \\ 
-Northwest County          & 0.389 ^{**}        \\ 
-                          & (0.129)             \\
- $N$                       & 468                \\ 
-$R^2$                     & 0.141              \\ 
-adj. $R^2$                & 0.109              \\ 
-Resid. sd                 & 1.315               \\ \hline
- \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
-\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
-\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
-\end{tabular} 
- \end{table}
 
-\newpage
 \begin{figure}[!h]
 \centering
-\caption{Simulations of Support for WIPP and Transportation Risk} \label{fig:sims}
+\caption{Simulations of WIPP Safety and Transportation Risk} \label{fig:sims}
 \begin{subfigure}[b]{0.45\textwidth}
 \caption{WIPP Support}
 \label{fig:supsims}
@@ -375,69 +202,44 @@ Resid. sd                 & 1.315               \\ \hline
 
 \newpage
 
-# Appendix {.unnumbered}
-\setcounter{table}{0}
-\renewcommand{\thetable}{A\arabic{table}}
+```{r, echo=FALSE, message=FALSE, results='asis'}
+wippSUPnative <- glm(wipp1.dic ~
+           age+gender+educ+inc50+
+           ideology+rep+env_bigprob+avg_gov_trust+nw.county+as.factor(year),
+           data=subset(wipp, native==1), family=binomial())
+wippRSKnative <- lm(wipp2 ~       age+gender+educ+inc50+ideology+rep+env_bigprob+avg_gov_trust+nw.county+as.factor(year), data=subset(wipp, native==1))
+stargazer(wippSUPnative, wippRSKnative, title="Logit and OLS Analysis of WIPP Safety and Transportation Risk: Native American Sample", align=TRUE, dep.var.caption = "WIPP Opinions", dep.var.labels=c("WIPP Safety", "Transportation Risk"), omit="year", covariate.labels=c("Age","Male","Education","Income","Ideology","Republican", "Environmental Concern","NM Government Performance", "Northwest County"),omit.stat=c("f","rsq","ser"), star.cutoffs=c(0.05,0.01,0.001), label=c("tab:nativeSampleModels"), no.space=TRUE, header=FALSE)
+```
 
-<!-- descriptive stats -->
+\newpage
+
 ```{r, include=FALSE}
-install.packages("stargazer", dependencies=TRUE, repos='http://cran.us.r-project.org')
-library(stargazer)
-vars.dat <- data.frame(wipp$age, wipp$gender, wipp$educ, wipp$inc50, wipp$minority, wipp$native, wipp$ideology, wipp$rep, wipp$avg_gov_trust, wipp$wipp1.dic, wipp$wipp2)
-stargazer(vars.dat, covariate.labels=c("Age","Male","Education","Income","Minority","Native American","Ideology","Republican", "NM Government Performance", "WIPP Support", "Transportation Risk"), title="Descriptive Statistics for Entire Sample", label="tab:descr")
+t.test(educ~gender, data=subset(wipp,native==1))
+t.test(inc50~gender, data=subset(wipp,native==1))
+t.test(ideology~gender, data=subset(wipp,native==1))
+t.test(rep~gender, data=subset(wipp,native==1))
+t.test(env_bigprob~gender, data=subset(wipp,native==1))
+t.test(avg_gov_trust~gender, data=subset(wipp,native==1))
 ```
 
 \begin{table}[!htbp] \centering 
-  \caption{Descriptive Statistics} 
-  \label{tab:descr} 
+  \caption{Difference of Means between Native American Males and Females} 
+  \label{tab:nativemeans} 
 \begin{tabular}{@{\extracolsep{5pt}}lccccc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
-Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+Variable & \multicolumn{1}{c}{Male} & \multicolumn{1}{c}{Female}  \\ 
 \hline \\[-1.8ex] 
-Age & 23,629 & 44.645 & 16.651 & 18 & 99 \\ 
-Male & 23,870 & 0.430 & 0.495 & 0 & 1 \\ 
-Education & 23,724 & 3.678 & 1.524 & 1 & 6 \\ 
-Income & 20,821 & 3.819 & 1.678 & 1 & 6 \\ 
-Minority & 22,702 & 0.330 & 0.470 & 0 & 1 \\ 
-Native American & 22,702 & 0.036 & 0.186 & 0 & 1 \\ 
-Ideology & 22,280 & 4.276 & 1.571 & 1 & 7 \\ 
-Republican & 21,416 & 0.355 & 0.479 & 0 & 1 \\ 
-NM Government Performance & 20,677 & 2.202 & 0.550 & 1.000 & 4.000 \\ 
-WIPP Support & 21,543 & 0.478 & 0.500 & 0 & 1 \\ 
-Transportation Risk & 17,958 & 3.138 & 1.341 & 1 & 5 \\ 
-\hline \\[-1.8ex] 
+Education & 3.343 & 3.264  \\ 
+Income & 3.568*** & 3.050  \\ 
+Ideology & 4.299 & 4.118  \\ 
+Republican & 0.282* & 0.210  \\ 
+Environmental Concern & 0.032 & 0.019 \\
+NM Government Performance &  2.199 & 2.259  \\ 
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
 \end{tabular} 
 \end{table} 
-
-```{r, include=FALSE}
-library(stargazer)
-vars.dat2 <- data.frame(wipp$age, wipp$gender, wipp$educ, wipp$inc50, wipp$ideology, wipp$rep, wipp$avg_gov_trust, wipp$wipp1.dic, wipp$wipp2)
-vars.dat2 <- subset(vars.dat2, wipp$native==1)
-stargazer(vars.dat2, covariate.labels=c("Age","Male","Education","Income","Ideology","Republican", "NM Government Performance", "WIPP Support", "Transportation Risk"), title="Descriptive Statistics: Native Americans", label="tab:descr2")
-```
-
-\begin{table}[!htbp] \centering 
-  \caption{Descriptive Statistics: Native Americans} 
-  \label{tab:descr2} 
-\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
-Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
-\hline \\[-1.8ex] 
-Age & 808 & 38.066 & 14.512 & 18 & 85 \\ 
-Male & 815 & 0.421 & 0.494 & 0 & 1 \\ 
-Education & 811 & 3.298 & 1.476 & 1 & 6 \\ 
-Income & 747 & 3.264 & 1.674 & 1 & 6 \\ 
-Ideology & 781 & 4.193 & 1.586 & 1 & 7 \\ 
-Republican & 729 & 0.240 & 0.427 & 0 & 1 \\ 
-NM Government Performance & 722 & 2.224 & 0.546 & 1.000 & 4.000 \\ 
-WIPP Support & 773 & 0.336 & 0.473 & 0 & 1 \\ 
-Transportation Risk & 634 & 3.609 & 1.372 & 1 & 5 \\ 
-\hline \\[-1.8ex] 
-\end{tabular} 
-\end{table} 
-
 
 \newpage
 

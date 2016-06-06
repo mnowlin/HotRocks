@@ -1,0 +1,429 @@
+---
+title: "Native Americans and Risk Perceptions: Exploring Attitudes Towards the Waste Isolation Pilot Plant in New Mexico"
+author:
+- name: Matthew C. Nowlin
+  affiliation: Department of Political Science, College of Charleston
+  email: nowlinmc@cofc.edu
+- name: Thaddieus Conner
+  affiliation: Department of Government, New Mexico State University 
+date: April 2015
+abstract: Prior research focusing on risk perceptions has led to the observation that well-educated and politically conservative white males tend to perceive lower levels of risk regarding environmental hazards compared to other populations. However, most research has tended to compare whites to African American, Hispanic, or Asian populations, with few studies examining how Native American populations, many of whom have experience with environmental hazards within their own communities, perceive risk. Combining 35 statewide surveys collected from 1990 to 2001, the following study explores the risk perceptions of Native American populations in New Mexico regarding the storage of nuclear waste in the region. We find that, similar to other minority groups, Native Americans tend to be less supportive of the Waste Isolation Pilot Plant (WIPP) facility, and have higher perceptions of risk related to the transportation of nuclear waste compared to white respondents. We also explore intraracial variation within Native American populations and find that within the Native American sub-sample older males tended to be more supportive of WIPP, and perceive less risk associated with transportation. This research is an important step in understanding how Native American groups perceive risk as it relates to environmental issues. 
+conference: Paper prepared for presentation at the annual meeting of the Western Political Science Association, Las Vegas NV, April 2015 
+...
+
+```{r, include=FALSE}
+wipp <- read.csv("NMdata.csv")
+``` 
+
+# Introduction 
+
+A consistent finding among scholars of risk perception is that a disconnect exists between what the experts view as potential hazards and what the general public views as potential hazards [@roberts_counting_1990; @sunstein_risk_2002]. Among the public, differences in risk perceptions across demographic groups has been demonstrated across a wide range of issues, in particular with white–males tending to posses lower perceptions of risk. The "white-male effect" is particularly pronounced with respect to environmental hazards, where white males have consistently been found to perceive environmental and/or technological risks as smaller and more acceptable than other demographic groups [@flynn_gender_1994; @davidson_gender_1996; @bord_gender_1997; @gustafson_gender_1998; @slovic_trust_1999; @finucane_gender_2000; @kalof_race_2002; @satterfield_discrimination_2004]. In general, white–males with higher levels of risk acceptance tend to be better educated, have higher incomes, and are more politically conservative than other groups [@flynn_gender_1994; @mccright_bringing_2013]. In addition, white–males also tend to place a higher degree of trust in institutions and authority to effectively manage risk [@flynn_gender_1994]. 
+
+Much of the work comparing the risk perceptions of white-males to minority groups has focused on African–American, Hispanic, and Asian populations. In addition, this work often assumes homogeneity among minority groups, with little consideration given to differences across individuals within these groups. For example, @rivers_beyond_2010 found that African-American males had lower levels of perceived risks than African-American females, thus demonstrating the "white-male effect" within another demographic group, however more research is needed within other minority populations. In particular, little work to date has explicitly focused on environmental or technological risk perceptions of Native American populations. This is particularly problematic given the history of potential exposure to hazards experienced by Native American populations and the subsequent environmental justice concerns [@gowda_voluntary_2000]. Using a combination of public opinion surveys conducted in New Mexico from 1990 to 2001, this paper examines the risk perceptions of Native Americans related to the Waste Isolation Pilot Plant (WIPP), a low-level radioactive waste facility located in southeast New Mexico. Specifically, we 1) compare the views of Native Americans about WIPP to other demographic groups and 2) we explore differences among Native Americans with regard to WIPP. 
+
+After almost a quarter century of debate, the WIPP facility in New Mexico opened and began receiving shipments of transuranic defense related waste in the spring of 1999. Prior to its opening, the WIPP facility was highly controversial and contested by many state officials and the public [@mccutcheon_nuclear_2002]. However, opposition to the facility from New Mexico residents steady declined over time and by 2001 the facility enjoyed support from a majority of residents [@jenkins-smith_reversing_2011]. Given that New Mexico has a sizable Native population, the WIPP facility is an ideal case for measuring risk perceptions within that population. In addition, the large-_N_ nature of the data allows for comparisons between Native Americans and other ethic groups and _intraracial_ comparisons of Native Americans. 
+
+In this paper we explore support for WIPP among Natives Americans in two ways.
+First we posited hypotheses about Native Americans views of the WIPP facility relative to other demographic groups and second we examine differences within the Native American sub-sample. The paper proceeds as follows, first we discuss the rich body of literature surrounding risk perceptions regarding nuclear energy and waste and introduce several general expectations that may be unique to the collective experience of Native Americans in shaping risk perception based on their political history with the United States federal government, as well as issues with environmental justice within their communities. We then introduce the data and methods used to explore perceptions of risk among this particular group in relation to other populations. We first examine the support for WIPP and the perceived risks associated with the transportation of transuranic waste among Native respondents as compared to whites and other minority groups (i.e., African–Americans and Hispanics). We then examine difference among Native Americans that influence various levels of support or opposition to WIPP and transportation risks. Finally, we conclude with a discussion of the findings and areas for future research in the field. 
+
+# Risk Perceptions and Nuclear Waste 
+
+Perceptions of risk vary considerably across the population on matters related to natural disaster, climate change, and especially nuclear waste storage. Policy debates surrounding the storage of nuclear waste have evoked concerns for general public safety, environmental justice, and inter-generational equity and has greatly shaped the way the public thinks about the potential hazards. Scholars have carefully examined how proximity, demographics, values, trust in government, and overall preferences within the general public correlate with higher or lower perceived levels of risk which help explain support or opposition to such programs. 
+
+Much of the literature has focused on how both environmental and individual-level attributes help explain variation in risk perception among the general public. Proximity to hazardous sites and other activity seen as potentially harmful to the environment has been a primary focus in exploring attitudes in the general public. This is referred to in the literature as the NIMBY (or "Not-in-My-Backyard") effect [@groothuis_locating_1994; @michaud_nimbyism_2008]. According to the standard model of NIMBYism, closer geographic proximity to undesirable or hazardous facilities should be correlated with higher levels of concern and opposition among those directly impacted. This is especially true concerning nuclear waste storage facilities and projects such as WIPP that garnered both opposition and support from elected officials and the public alike [@jenkins-smith_reversing_2011; @mccutcheon_nuclear_2002]. Such concerns have been documented in studies that show a relationship between close proximity to facilities and levels of opposition [e.g., @benford_whose_1993] and to reduced property values in those areas [@kiel_house_1995; @gawande_nuclear_2001]. However, some studies have also found that such concerns may be mitigated by the potential economic returns from which communities close to siting areas may benefit. Contrary to expectations of NIMBYism, perceptions of benefits and familiarity with nuclear technology can lead to higher levels of support from communities closest to the effected areas  [@jenkins-smith_mitigation_2001]. Indeed, with regard to nuclear technology proximity to a nuclear plant can _increase_ support for expanding nuclear energy [@van_der_pligt_attitudes_1986] and, in the case of WIPP, proximity to the facility and the transportation route was associated with increased support [@jenkins-smith_reversing_2011]. NIMBYism therefore, does not provide a full explanation of opposition to potentially hazardous facilities, such as a nuclear waste storage site. 
+
+Another branch of literature has focused more attention on the individual level characteristics that may shape risk perceptions among the general public. This includes a number of possible characteristics including demographics such as age, income, gender, education level, and race [@finucane_gender_2000]. More important to this investigation is understanding how race and ethnicity influence perceptions of risk and levels of support or opposition to activities such as nuclear waste storage. A rich body of research has focused particularly on the presence of a white-male effect on risk perception [@flynn_gender_1994; @davidson_gender_1996; @bord_gender_1997; @gustafson_gender_1998; @slovic_trust_1999; @finucane_gender_2000; @kalof_race_2002; @satterfield_discrimination_2004; @greenberg_energy_2011]. Based on this reasoning, women tend to perceive less risk than men concerning activities such as the storage of nuclear waste [@steger_gender_1989]. Risk perception is also lower among Whites compared to people of color who tend to have higher perceptions of risk. When taking both gender and race into account, white men demonstrate the lowest level of perceived risk compared to both white females and other minority populations leaving them less likely to oppose potentially hazardous activities [@flynn_gender_1994]. 
+
+Several studies associate these seemingly biological differences to a number of underlying factors. @flynn_gender_1994 observe that white-males with low-risk perceptions tend to have higher incomes, better education, and are politically more conservative than all other groups and that may influence levels of perceived risk. White-males are also found to have more faith and trust in the ability of authorities to manage potential hazards. The increased trust in authority points to white-males as being more hierarchical in their worldview and, therefore, more likely to trust risk management institutions. Indeed, @kahan_culture_2007 found an interactive effect between white–males and a hierarchical-individualistic worldview when predicting risk perceptions. In addition, @finucane_gender_2000  argue that important sociopolitical characteristics help explain why differences in perceived risk exist based on gender and race. The authors argue that important cultural differences exist among white-males given their position and status in society. Whereas, women and non-white men may have less influence and power over decisions concerning potentially hazardous facilities. This contributes to a lower level of trust among women and minorities who may have fewer opportunities to guide decision-making and less access to important information in which to educate themselves about the process and efforts to mitigate risk [@mccright_bringing_2013]. @olofsson_white_2011 found no gender differences in perceptions of risk in Swedish society, which is based on gender equality, thus providing further evidence for the role of power and status in risk acceptance. Finally, it should be noted that differences between white males and other demographic groups does not imply heterogeneity in terms of drivers of risk perceptions within those other groups [@rivers_beyond_2010; @greenberg_energy_2011]. For example, @rivers_beyond_2010 found that African-American males were likely to have lower perceptions of risk across several potential hazards than African-American females. 
+
+Apart from NIMBYism and demographics, the core values and beliefs of individuals have been demonstrated to play a role in risk perceptions in general [@michaud_nimbyism_2008; @kahan_fear_2006] and with regard to nuclear technology specifically [@kahan_cultural_2011; @greenberg_energy_2011; @jenkins-smith_ideology_1994; @rothman_elite_1987]. In particular, differences in political values such as partisanship and ideology, can influence views about nuclear energy. Liberals and Democrats have been shown to be historically more opposed to nuclear energy than are conservatives and Republicans [@rothman_elite_1987; @greenberg_energy_2011]. In addition, the environmental movement has long opposed nuclear energy [@duffy_nuclear_1997], therefore concern about the environment may be associated with less support for nuclear technology. In the case of WIPP, Republicans and conservatives were consistently more supportive than independents, liberals, and Democrats and those with lower levels of environmental concern were more supportive of the facility [@jenkins-smith_reversing_2011]. 
+
+Finally, the literature suggests that overall levels of trust in government play an important role in understanding support or opposition to facilities that accompany high levels of risk [@slovic_risk_1991; @groothuis_locating_1994; @siegrist_salient_2000]. According to this logic, lower levels of trust in the government’s ability to manage hazardous facilities will lead to higher levels of perceived risk from such endeavors. This, in turn, will lead to increased opposition as group’s have little faith in the ability of government officials to safely and effectively manage potentially dangerous materials. As a result, trust in government plays a pivotal role in understanding how different populations will perceive such highly controversial operations as the storage of nuclear waste. However, most studies exploring differences between white-males and minority populations have focused primarily on African American, Hispanic, and Asian populations with little understanding of how Native American groups perceive risk relative to other stakeholders.  As discussed in the next section, trust in government and past experiences with environmental hazards may play an especially influential role in shaping the collective perceptions of risk among Native American populations who have been an important stakeholder in meeting the energy and resource needs of the United States. 
+
+# Native Americans, Environmental Justice, and Nuclear Waste
+
+Native American populations have a particularly long and complicated history with issues of environmental justice and degradation within their communities that may weigh heavily on their collective perception of risk. First, Native Americans are members of distinct Native nations that possess an inherent right to sovereignty and self-governance that predates the signing of the U.S. Constitution [@wilkins_american_2010]. This places Native communities in a unique position relative to other actors in the intergovernmental relations framework of stakeholders in decisions concerning environmental and energy policy. In fact, when state and local governments have been opposed to federal programs such as those related to nuclear waste storage within their communities, tribal governments have been seen as another viable contender in competing for federal funds to locate facilities deemed undesirable by other jurisdictions in the face of extreme opposition from registered voters [@gedicks_new_1994; @gowda_voluntary_2000]. Such targeting has naturally raised concerns for environmental justice and equity as Native communities who, in some instances, face extreme levels of poverty and other social maladies and as a result may be more likely to accept such high risk programs in light of potential economic returns [@lynch_native_2012]. As @bullard_environmentalism_2000 [pg.571] argue, "Native American nations have become prime targets for waste trading." These dynamics make it even more important to understand how Native Americans perceive levels of risk that have thus far gone relatively unexplored in the literature on environmental justice. 
+
+Native nations, particularly in the American southwest, have been at the very heart of federal environmental and energy programs, including voluntary siting projects and nuclear waste storage [@reed_native_2002]. @gowda_voluntary_2000 investigate several dimensions of equity concerning the adoption of monitored, retrievable storage (MRS) facilities of high-level nuclear waste from the cultural perspective of Native American communities.  The authors find that after state and local officials refused to enter into voluntary agreements in response to intense opposition from key constituents, tribal governments including the Mescalero Apache in New Mexico were among the few actors willing to accept the risks in return for economic incentives of the program. However, while the process of MRS negotiations was designed to be equitable from a largely Western context, some raised concerns as to whether decisions by tribal governments to adopt high risk programs were truly representative of the overall sentiment of the American Indian citizenry. Thus, while tribal government representatives may be more open to high-risk facilities for primarily economic reasons, such support may mask the individual sentiments of Native Americans who may be more sensitive to greater levels of risk in similar ways as other underrepresented populations. 
+
+It is also the case that many Native American groups maintain a spiritual connection with the environment that may factor into their overall levels of perceived risk concerning nuclear waste storage [@bullard_environmentalism_2000; @adamson_american_2001]. Along similar lines, certain American Indian groups also take into consideration issues of inter-generational equity in their belief systems as seen in a concern for what is commonly referred to as the 7th Generation. According to this logic, it is important for human beings to consider the impact of their decisions not only on the present generation, but seven generations into the future. The condition of the environment we leave for future generations should not be discounted or dismissed, which raises the perceived costs of such risky environmental decisions as burying nuclear waste. 
+
+This is even more poignant given the history of environmental degradation that continues on tribal land and is well documented in the historical record. Uranium mining on the Navajo reservation, for instance, has caused serious environmental and health issues for tribal residents. From the second World War to the 1980s, approximately four million tons of uranium was extracted from the Navajo reservation to help fuel the nuclear arms race with leases overseen by the U.S. federal government. Such activities continue to have devastating effects. These include the contamination of wells that provide clean drinking water to the Navajo people and livestock, a rise in cancer related deaths and other health issues connected to exposure to radiation, and contamination of land across 520 separate sites on the reservation. In 2005, the Navajo nation instituted a reservation-wide ban on uranium mining in light of these environmental realities though efforts to reintroduce mining in the community remain. Stories such as this are not isolated to the Navajo nation and stretch across Indian country which may arguably shape the collective assessment of risk among this particular population [@brook_environmental_1998; @frohmberg_assessment_2000; @lynch_native_2012; @nussbaum_americas_2012]. 
+
+Another element that makes Native American groups potentially unique from that of other populations with relation to risk perception concerns the importance of trust in government. To say that a degree of distrust exists between Native Americans and federal officials is perhaps an understatement given the history of conflict, deception, and cultural assimilation that defined tribal-federal relations for over a century [@vine_american_1983; @wilkins_american_2010]. Scholars argue that a long line of injustices suffered at the hands of the federal government have had a dramatic effect on U.S.-tribal relations including broken treaty agreements and forced relocation in the 19th century, assimilation into Western society via federally funded and operated Indian boarding schools in the early 20th century, and a struggle for basic human rights and respect for tribal sovereignty in the 1960s to 1980s. As a result, Native Americans may be particularly suspicious of federal programs that accompany any level of potential harm such as the storage and transportation of nuclear waste. Brooks (1998) goes so far as to argue that such environmental injustices are a direct extension of historical incidents of genocide against Native American people that should frame potentially damaging federal Indian policies such as mining and toxic waste. In this manner, Native Americans may be more sensitive to risk based on their collective cultural and historical experience with federal programs and policies that pose even the most remote threat to the environment. 
+
+## Native American Risk Perceptions and the WIPP Facility 
+
+Native Americans possess a unique relationship with the federal government and have been at the heart of many environmental justice disputes over the past several decades, therefore it is vitally important that we understand this particular group’s preferences on issues concerning nuclear waste. Based on previous research and important cultural and historical experiences with environmental justice issues, we expect that Native American will have risk perceptions closer to those of other minorities. Therefore, we expect that Native Americans will be less supportive and have higher risk perceptions of the WIPP facility than Whites. Furthermore, based on experiences with environmental justice issues that set Native Americans apart from other populations we expect risk perceptions to be even higher than that of other minority groups. Therefore, we expect that Native Americans will be less supportive and have higher risk perceptions of WIPP than other minorities.
+
+Given the dearth of quantitative analysis of the risk perceptions of Native populations, our analysis of intraracial differences among Native Americans is largely exploratory. However, based on the findings of @rivers_beyond_2010 regarding African-Americans males, we expect Native American males to be more supportive and view less risk associated with WIPP. In addition, given the past experiences of the Navajo tribe in particular we expect that Native Americans living in counties that contain Navajo land to be less supportive and perceive higher risk related to WIPP than other Native Americans in other parts of New Mexico. Finally, when examining the perceptions of Native Americans of WIPP we will use several of the standard measures used to predict risk perceptions including other demographics (age, education, income), values (political ideology, partisanship, environmental concern) and views of government. The next section introduces the data and methods used to explore these patterns among Native American populations. 
+
+# Data and Methods 
+
+The data that will be used comes from a collection of 35 statewide
+surveys conducted in New Mexico, between 1990 and 2001, by the
+University of New Mexico's Institute for Public Policy (IPP). These
+surveys were collected quarterly until 1995, and were subsequently
+administered twice a year. For the purposes of analysis the surveys
+are aggregated by year. During this period data was collected from
+over $\sim25,000$ respondents, including $\sim850$ that
+self-identified as American Indian. The large sample of Native Americans allows for statistical analysis of this population.
+
+We examine two dependent variables related to the WIPP facility. The first is a measure of support for WIPP and the second is a risk measure that measures the perceived risks associated with the transportation of nuclear material to the WIPP facility. WIPP support is based on the following question:
+
+> There has been much controversy over WIPP, the Waste Isolation Plant in New Mexico, which is to serve as a disposal facility for transuranic radioactive wastes. Which of the following best represents your view? 
+
+\noindent  Respondents were given four choices; open, open with minor change, open with major changes, or not open at all.^[For the surveys administered after WIPP opened, wording was changed to _should never have been opened_.] The responses were re-coded into a dichotomous variable so that one is WIPP should open/open with minor changes and zero is WIPP needs major changes or should not open. The mean for WIPP support is `r round(mean(wipp$wipp1.dic,na.rm=T),3)`, which indicates that when pooling the sample across all years `r round(mean(wipp$wipp1.dic,na.rm=T),3)*100`% of respondents were supportive of the WIPP facility. 
+
+The transportation risk question asked respondents to rate the risks associated with the transportation of radioactive material to the WIPP facility:
+
+> Thinking specifically about the transportation of wastes to WIPP, some opponents of WIPP have argued that the transportation of material to WIPP poses a significant risk of releasing radiation into the environment.
+
+> The Department of Energy has argued that these risks are extremely small. Using a scale where one is no risk, five is extreme risk, and you may choose any number from one to five, how risky do you consider the transportation of low-and medium-level radioactive material to the WIPP facility to be? 
+
+\noindent The mean for the transportation risk variable is `r round(mean(wipp$wipp2,na.rm=T),3)` on the one to five scale. The WIPP support question was asked in all years from 1990 to 2001, however, the risk of transportation question was asked beginning in 1992. 
+
+<!--^[Full question wording
+is available in the appendix.]--> 
+
+The main independent variables of interest are the racial demographics
+of the respondents. To test the hypothesis that Native Americans would be less supportive of WIPP and more likely to perceives higher levels of risk related to transportation than Whites, a dummy variable was created for Native Americans, with those that self-identified as American Indian coded as one. The mean of the Native American variable was `r round(mean(wipp$native,na.rm=T),3)`, indicating that `r round(mean(wipp$native,na.rm=T),3)*100`% of the sample identified as American Indian. In addition, a dummy variable for minority respondents, which includes self-identified African--Americans, Hispanics, and Asians, was created and self-identified White respondents is used as the excluded referent category.
+
+We also control for other demographic variables, such as
+gender (Male = 1), education, and income. In addition, we include measures of values including political ideology--a seven point scale with one indicating strong conservative and seven indicating strong liberal--political partisanship--a dummy variable for the Republican party with one indicating the respondent self-identifies as a Republican and zero indicating Democratic party and other party. We also include a measure of environmental concern, with those that identified environmental quality as the most important problem facing New Mexico coded as one and those that indicated other issues as zero. As a proxy for trust in government, we use a measure of the performance of the New Mexico government. This measure is an average of three questions that asked respondents to rate, from one (poor) to four (excellent), the performance of New Mexico's legislature, public employees, and governor.^[Descriptive statistics for all variables are in the Appendix.] Finally, we control for year that the survey was administered.^[We use fixed effects for year, with a dummy variable for each year and with 1990 as the excluded referent year.]
+
+# Results
+
+As noted, it is expected that Native Americans would be less supportive of WIPP than Whites, all else equal. To test this hypothesis, Logit regression was used and the results are presented in Table \ref{tab:wipp1}. 
+
+```{r, include=FALSE}
+wippSUP <- glm(wipp1.dic ~
+           age+gender+educ+inc50+minority+native+
+           ideology+rep+env_bigprob+avg_gov_trust+as.factor(year),
+           data=wipp, family=binomial())
+library("apsrtable")
+apsrtable(wippSUP, stars="default", digits=3, model.names=c("WIPP Support"), coef.names=c("Intercept","Age","Male","Education","Income","Minority","Native American","Ideology","Republican", "Environmental Concern","NM Government Performance"), omitcoef=list(12:21), caption=c("Logit Estimates of Support for the WIPP Facility"), label="tab:wipp1", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
+```
+
+\begin{table}[!h] \centering \footnotesize
+\caption{Logit Estimates of Support for the WIPP Facility}
+\label{tab:wipp1} 
+\begin{tabular}{ l D{.}{.}{3} } 
+\hline 
+  & \multicolumn{ 1 }{ c }{ WIPP Support } \\ \hline
+ %                         & WIPP Support \\ 
+Intercept                 & -2.898 ^{***}\\ 
+                          & (0.135)      \\ 
+Age                       & 0.015 ^{***} \\ 
+                          & (0.001)      \\ 
+Male                      & 0.825 ^{***} \\ 
+                          & (0.035)      \\ 
+Education                 & 0.014        \\ 
+                          & (0.013)      \\ 
+Income                    & 0.131 ^{***} \\ 
+                          & (0.011)      \\ 
+Minority                  & -0.466 ^{***}\\ 
+                          & (0.039)      \\ 
+Native American           & -0.636 ^{***}\\ 
+                          & (0.097)      \\ 
+Ideology                  & 0.118 ^{***} \\ 
+                          & (0.012)      \\ 
+Republican                & 0.446 ^{***} \\ 
+                          & (0.039)      \\ 
+Environmental Concern     & -0.722 ^{***}\\ 
+                          & (0.118)      \\ 
+NM Government Performance & 0.257 ^{***} \\ 
+                          & (0.032)       \\
+ $N$                       & 15818        \\ 
+AIC                       & 19620.799    \\ 
+BIC                       & 20264.987    \\ 
+$\log L$                 & -9726.399     \\ \hline
+ \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
+\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
+\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
+\end{tabular} 
+ \end{table}
+
+As expected, we find that Native American respondents expressed less support for WIPP than did white respondents. Also as expected, other minority respondents were also less supportive of the WIPP facility. In addition, older, male, and higher income respondents were also supportive of WIPP. With respect to values, we find that more conservative and Republican respondents were also more supportive, whereas those that were concerned about environmental quality were less supportive. Finally, we find that opinions about the performance of the New Mexico state government was a positive and significant predictor of WIPP support. 
+
+Next, we examine the perceived level of risk associated with the transportation of transuranic waste to the WIPP facility using OLS regression. 
+The OLS model results are shown in Table \ref{tab:wipp2}. 
+
+```{r, include=FALSE}
+wippRSK <- lm(wipp2 ~
+          age+gender+educ+inc50+minority+native+
+          ideology+rep+env_bigprob+avg_gov_trust+as.factor(year), data=wipp)
+apsrtable(wippRSK, stars="default", digits=3, model.names=c("Transportation Risk"), coef.names=c("Intercept","Age","Male","Education","Income","Minority","Native American","Ideology","Republican", "Environmental Concern", "NM Government Performance"), omitcoef=list(12:21), caption=c("OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility"), label="tab:wipp2", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
+```
+\begin{table}[!h] \centering \footnotesize
+\caption{OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility}
+\label{tab:wipp2} 
+\begin{tabular}{ l D{.}{.}{3} } 
+\hline 
+  & \multicolumn{ 1 }{ c }{ Transportation Risk } \\ \hline
+ %                         & Transportation Risk\\ 
+Intercept                 & 4.830 ^{***}       \\ 
+                          & (0.079)            \\ 
+Age                       & -0.008 ^{***}      \\ 
+                          & (0.001)            \\ 
+Male                      & -0.596 ^{***}      \\ 
+                          & (0.021)            \\ 
+Education                 & -0.036 ^{***}      \\ 
+                          & (0.008)            \\ 
+Income                    & -0.085 ^{***}      \\ 
+                          & (0.007)            \\ 
+Minority                  & 0.365 ^{***}       \\ 
+                          & (0.024)            \\ 
+Native American           & 0.500 ^{***}       \\ 
+                          & (0.058)            \\ 
+Ideology                  & -0.062 ^{***}      \\ 
+                          & (0.007)            \\ 
+Republican                & -0.280 ^{***}      \\ 
+                          & (0.024)            \\ 
+Environmental Concern     & 0.443 ^{***}       \\ 
+                          & (0.072)            \\ 
+NM Government Performance & -0.146 ^{***}      \\ 
+                          & (0.020)             \\
+ $N$                       & 13409              \\ 
+$R^2$                     & 0.174              \\ 
+adj. $R^2$                & 0.173              \\ 
+Resid. sd                 & 1.212               \\ \hline
+ \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
+\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
+\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
+\end{tabular} 
+ \end{table}
+
+As expected, Native Americans, and other racial minorities, rated the risks of transportation as higher, on average, than white respondents. Also as expected, older, male, higher educated, higher income respondents were less likely than other demographic groups to perceive risk associated with transportation to the WIPP facility. As respondents became more conservative, Republican, and had a positive view of New Mexico government performance, they were, on average, less likely to view transportation as risky. Finally, those concerned with environmental quality were more likely to see the transport of materials to WIPP as risky. 
+
+To illustrate the results, we ran 10,000 simulations of the WIPP support and
+transportation risk models. The simulations were used to estimate the model parameters [@king_making_2000; @gelman_data_2006].^[Based on the point estimates and the variance-covariance estimates from the models, the simulations take 10,000 random number draws to estimate the parameters.] The parameter estimates were then used to estimate the predicted probability of support for WIPP and the level of risk, from one to five, associated with the transportation of material to WIPP. The results for Native Americans, White males, and other minorities, with all other variables held constant at their mean^[The year variable was held constant at it's median, 1996], are shown in Figure \ref{fig:sims}. 
+
+```{r, include=FALSE}
+source("nativeSIMScode.R")
+pdf("supsims.pdf")
+plot(density(white.sim1.P), xlim=c(0.2,0.8), ylim=c(0,40), main="", xlab="Density Curves of the Predicted Probabilities of WIPP Support")
+lines(density(native.sim1.P), lty=2)
+lines(density(minority.sim1.P), lty=3)
+legend("topleft", c("White Males","Native Americans","Other Minorities"), lty=1:3, bty="n")
+dev.off()
+```
+
+```{r, include=FALSE}
+pdf("risksims.pdf")
+plot(density(white.sim2), xlim=c(1,5), ylim=c(0,15), xaxt="n", main="", xlab="Density Curves of Perceived Risk of Transportation to WIPP")
+axis(side = 1, at=1:5, label=c("No Risk","2","3","4","Extreme Risk"))
+lines(density(native.sim2), lty=2)
+lines(density(minority.sim2), lty=3)
+legend("topleft", c("White Males","Native Americans","Other Minorities"), lty=1:3, bty="n")
+dev.off()
+```
+
+\begin{figure}[!h]
+\centering
+\caption{Simulations of Support for WIPP and Transportation Risk} \label{fig:sims}
+\begin{subfigure}[b]{0.45\textwidth}
+\caption{WIPP Support}
+\label{fig:supsims}
+\includegraphics[width=\textwidth]{supsims.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\caption{Transportation Risk}
+\label{fig:risksims}
+\includegraphics[width=\textwidth]{risksims.pdf}
+\end{subfigure}
+\end{figure}
+
+As can be seen in Figure \ref{fig:supsims}, the predicted probability of support for WIPP of White males exceeds that of Native Americans and other minorities. The mean predicted probability for White males was `r round(mean(white.sim1.P),3)` with a range from `r round(min(white.sim1.P),3)` to `r round(max(white.sim1.P),3)`. For Native Americans the mean was `r round(mean(native.sim1.P),3)` (`r round(range(native.sim1.P),3)`) and for other minorities it was `r round(mean(minority.sim1.P),3)` (`r round(range(minority.sim1.P),3)`). Also as shown, support for WIPP between Native Americans and other minorities overlaps, indicating that, contrary to expectations, no significant differences in support exist between those groups. In addition, as illustrated in Figure \ref{fig:risksims}, White--males
+tended to perceive the risks associated with transportation as less, at a mean of `r round(mean(white.sim2),3)` (`r round(range(white.sim2),3)`), than Native American and minority respondents with means of `r round(mean(native.sim2),3)` (`r round(range(native.sim2),3)`) and `r round(mean(minority.sim2),3)` (`r round(range(minority.sim2),3)`) respectively. As show, there is again overlap between Native Americans and other minorities with regard to transportation risk, indicating no difference in risk perceptions between those two groups. 
+
+## Native Americans 
+
+```{r, include=FALSE}
+library(car)
+wipp$native.nw <- recode(wipp$county,                                "16=1;18=1;22=1;24=1;25=1;else=0")
+```
+
+<!-- table that compares IVs between native, all, and white -->
+
+While a large body of research has shown that White males tend to more accepting of risk than racial minorities, less work has examined differences with regard to risk perceptions _within_ minority groups, particularly Native Americans. To examine differences in risk perceptions between Native Americans we use only those respondents that self-identified as American Indian. Building on @rivers_beyond_2010, we expect Native American males to be more supportive of WIPP than Native American females. In addition, we expect differences among tribes, particularly between the Navajo and the Mescalero Apache. As a proxy for Navajo tribal affiliation, we code the five counties (Los Alamos, McKinley, Rio Arriba, Sandoval, and San Juan) in the northwest corner of the state that overlap Navajo territory as one and all other counties a zero. The mean for the northwest county variable is `r round(mean(wipp$native.nw,na.rm=T),3)`, which indicates that `r round(mean(wipp$native.nw,na.rm=T),3)*100`% of Native American respondents live in those counties. As before, we first examine support for WIPP and the results are shown in Table \ref{tab:native1}.
+
+```{r, include=FALSE}
+wipp1.native <- glm(wipp1.dic ~ age+gender+educ+inc50+ideology+rep +env_bigprob+avg_gov_trust+native.nw+as.factor(year),data=subset(wipp, native==1), family=binomial())
+library(apsrtable)
+apsrtable(wipp1.native, stars="default", digits=3, model.names=c("WIPP Support"), coef.names=c("Intercept","Age","Male","Education","Income","Ideology","Republican", "Environmental Concern", "NM Government Performance", "Northwest County"), omitcoef=list(11:20), caption=c("Logit Estimates of Support for the WIPP Facility: Native Americans"), label="tab:native1", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
+```
+
+\begin{table}[!h] \centering \footnotesize
+\caption{Logit Estimates of Support for the WIPP Facility: Native Americans}
+\label{tab:native1} 
+\begin{tabular}{ l D{.}{.}{3} } 
+\hline 
+  & \multicolumn{ 1 }{ c }{ WIPP Support } \\ \hline
+ %                         & WIPP Support \\ 
+Intercept                 & -2.337 ^{***}\\ 
+                          & (0.693)      \\ 
+Age                       & 0.021 ^{**}  \\ 
+                          & (0.007)      \\ 
+Male                      & 0.441 ^*     \\ 
+                          & (0.193)      \\ 
+Education                 & -0.049       \\ 
+                          & (0.071)      \\ 
+Income                    & 0.164 ^{**}  \\ 
+                          & (0.063)      \\ 
+Ideology                  & 0.054        \\ 
+                          & (0.061)      \\ 
+Republican                & 0.549 ^*     \\ 
+                          & (0.223)      \\ 
+Environmental Concern     & -0.142       \\ 
+                          & (0.578)      \\ 
+NM Government Performance & 0.055        \\ 
+                          & (0.181)      \\ 
+Northwest County          & -0.247       \\ 
+                          & (0.201)       \\
+ $N$                       & 566          \\ 
+AIC                       & 702.223      \\ 
+BIC                       & 1049.311     \\ 
+$\log L$                 & -271.112      \\ \hline
+ \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
+\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
+\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
+\end{tabular} 
+ \end{table}
+
+
+As expected, we find that Native Americans males were, on average, more supportive of WIPP than Native American women. In addition, older Native Americans, those with higher incomes, and Republicans were also more likely to be supportive of WIPP. However, there were no significant differences between Native Americans in the northwest New Mexico counties and those in the rest of the state. Next we examine the risk perceptions associated with the
+transportation of radioactive materials and the results are shown in Table
+\ref{tab:native2}.
+
+```{r, include=FALSE}
+wipp2.native <- lm(wipp2 ~ age+gender+educ+inc50+ideology+rep+env_bigprob +avg_gov_trust+native.nw+as.factor(year),data=subset(wipp, native==1))
+apsrtable(wipp2.native, stars="default", digits=3, model.names=c("Transportation Risk"), coef.names=c("Intercept","Age","Male","Education","Income","Ideology","Republican", "Environmental Concern","NM Government Performance","Northwest County"), omitcoef=list(11:20), caption=c("OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility: Native Americans"), label="tab:native2", notes=list("Estimated coefficients for survey years not listed", se.note, stars.note))
+```
+
+\begin{table}[!h] \centering \footnotesize
+\caption{OLS Estimates of Perceived Risk of Nuclear Waste Transportation to the WIPP Facility: Native Americans}
+\label{tab:native2} 
+\begin{tabular}{ l D{.}{.}{3} } 
+\hline 
+  & \multicolumn{ 1 }{ c }{ Transportation Risk } \\ \hline
+ %                         & Transportation Risk\\ 
+Intercept                 & 4.974 ^{***}       \\ 
+                          & (0.442)            \\ 
+Age                       & -0.020 ^{***}      \\ 
+                          & (0.004)            \\ 
+Male                      & -0.305 ^*          \\ 
+                          & (0.127)            \\ 
+Education                 & 0.029              \\ 
+                          & (0.046)            \\ 
+Income                    & -0.092 ^*          \\ 
+                          & (0.040)            \\ 
+Ideology                  & 0.013              \\ 
+                          & (0.040)            \\ 
+Republican                & -0.254             \\ 
+                          & (0.154)            \\ 
+Environmental Concern     & 0.745 ^\dagger    \\ 
+                          & (0.395)            \\ 
+NM Government Performance & -0.108             \\ 
+                          & (0.119)            \\ 
+Northwest County          & 0.389 ^{**}        \\ 
+                          & (0.129)             \\
+ $N$                       & 468                \\ 
+$R^2$                     & 0.141              \\ 
+adj. $R^2$                & 0.109              \\ 
+Resid. sd                 & 1.315               \\ \hline
+ \multicolumn{2}{l}{\tiny{Estimated coefficients for survey years not listed}}\\
+\multicolumn{2}{l}{\tiny{Standard errors in parentheses}}\\
+\multicolumn{2}{l}{\tiny{$^\dagger$ significant at $p<.10$; $^* p<.05$; $^{**} p<.01$; $^{***} p<.001$}} 
+\end{tabular} 
+ \end{table}
+
+As can be seen, older Native American males with higher incomes tended to view the risks associated with transportation as less. In addition, Native Americans concerned about the environment were likely, at the _p_$<.10$ level, to see more risk of transportation. Finally, Native Americans that live
+in the northwest counties tended to view the risks associated with
+transportation as higher than those in other parts of the state. 
+
+# Discussion and Conclusion 
+
+The white-male effect with regard to risk perceptions has been demonstrated consistently across a wide range of issues. Specifically with nuclear technology, white-males tend to be more supportive of nuclear technology and more accepting of the potential risks associated with nuclear facilities. Apart from gender and ethnicity, the white males that are more accepting of risk also tend to be older, have higher incomes, more education, and more politically conservative than other groups. Only recently has work begun to explore the intraracial dynamics of risk perceptions within minority groups. In this paper, we examined the attitudes of Native Americans in New Mexico about the WIPP facility.
+
+The views of Native Americans regarding the risks associated with energy and environmental policy are particularly important to consider given the unique position of tribes within the intergovernmental framework of the US and given the history of environmental justice concerns. Despite these concerns, little quantitative analysis of the risk perceptions of Native Americans has been done. Given the historical experiences of Native American populations, we derived some expectations with regard to the perceptions of risk of this population and, more specifically, options about the WIPP facility, a tranuranic waste facility located in southeast New Mexico. It was posited that, because of their experiences and the white-male effect, Native Americans would be less supportive of WIPP and perceive more risk associated with WIPP than Whites. This expectation was met as Native American were, _ceteris paribus_, significantly less supportive of WIPP than Whites and significantly more likely to view the transportation of nuclear materials to the WIPP facility as posing more risk than Whites. In addition, it was posited that Native Americans would less supportive and view WIPP as more risky than other minority groups. As evidenced by \ref{fig:sims}, this expectation was not met as no significant differences existed between Natives and other minorities in their views of the WIPP facility. The lack of difference between Native Americans and other minorities could be seen as evidence of the role of power and status in society as, at least a partial driver of the white-male effect. While Natives Americans and other racial minorities have differing experiences, both groups have historically been denied access to public decision-making processes and this historic lack of access can foster distrust of government activities and exacerbate perceptions of risk. In addition, white-males typically has higher incomes, more education, and are more politically conservative than other groups and these factors also contribute to support of nuclear technology. 
+
+While the major interest of this paper was the risk perceptions of Native Americans, we also controlled for other variables that have been found, in the extant literature, to influence risk perceptions. Specifically, we controlled for political values, environmental concern, and views about the performance of the New Mexico state government. In each case we found these to be significant predictors of views about WIPP. Specifically we found that increased conservatism, Republican party affiliation, and increased support of New Mexico government to be related to support for WIPP and less perception of risk related to transportation to WIPP. Whereas, we found that increased concern for the environment, on average, led to less support of WIPP and higher perceptions of transportation risk. 
+
+Apart from comparing Native Americans to other racial groups, we also examined differences within the Native American sub-sample. To our knowledge, no other study has used large-_N_ statistics to examine risk perceptions of Native Americans. Drawing on work examining differences in African-Americans [@rivers_beyond_2010], we posited that Native American males, like African-Americans males in the previous study, would differ in their views of WIPP from Native American females, and this expectation was met. Specifically, we found that Native American males were more supportive and viewed less risk associated with WIPP than Native American females. In addition, we found that older and higher income Native Americans were more support and saw less risk than those that were younger and lower income. With regard to values, Native Americans that identified as Republican were more support of WIPP and those that were more concerned with the environment were more likely (at $p<.10$) to view higher risks associated with transportation. Finally, we posited that Native Americans living in counties in the northwest part of New Mexico that contain Navajo land, would be less supportive of WIPP than those in other parts of the state. This expectation is based on the history of uranium mining in Navajo territories. We found no differences between county of residence in support of WIPP, but Natives in the northwest counties were more likely than Native Americans to view transportation as having more risk. The county measure is a rough proxy for tribal affiliation, therefore more work is needed to determine differences in risk perceptions across tribes. 
+
+
+
+\newpage
+
+# Appendix {.unnumbered}
+
+<!-- descriptive stats -->
+```{r, include=FALSE}
+install.packages("stargazer", dependencies=TRUE, repos='http://cran.us.r-project.org')
+library(stargazer)
+vars.dat <- data.frame(wipp$age, wipp$gender, wipp$educ, wipp$inc50, wipp$minority, wipp$native, wipp$ideology, wipp$rep, wipp$avg_gov_trust, wipp$wipp1.dic, wipp$wipp2)
+stargazer(vars.dat, covariate.labels=c("Age","Male","Education","Income","Minority","Native American","Ideology","Republican", "NM Government Performance", "WIPP Support", "Transportation Risk"), title="Descriptive Statistics for Entire Sample", label="tab:descr")
+```
+
+\begin{table}[!htbp] \centering 
+  \caption{Descriptive Statistics} 
+  \label{tab:descr} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+Age & 23,629 & 44.645 & 16.651 & 18 & 99 \\ 
+Male & 23,870 & 0.430 & 0.495 & 0 & 1 \\ 
+Education & 23,724 & 3.678 & 1.524 & 1 & 6 \\ 
+Income & 20,821 & 3.819 & 1.678 & 1 & 6 \\ 
+Minority & 22,702 & 0.330 & 0.470 & 0 & 1 \\ 
+Native American & 22,702 & 0.036 & 0.186 & 0 & 1 \\ 
+Ideology & 22,280 & 4.276 & 1.571 & 1 & 7 \\ 
+Republican & 21,416 & 0.355 & 0.479 & 0 & 1 \\ 
+NM Government Performance & 20,677 & 2.202 & 0.550 & 1.000 & 4.000 \\ 
+WIPP Support & 21,543 & 0.478 & 0.500 & 0 & 1 \\ 
+Transportation Risk & 17,958 & 3.138 & 1.341 & 1 & 5 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+```{r, include=FALSE}
+library(stargazer)
+vars.dat2 <- data.frame(wipp$age, wipp$gender, wipp$educ, wipp$inc50, wipp$ideology, wipp$rep, wipp$avg_gov_trust, wipp$wipp1.dic, wipp$wipp2)
+vars.dat2 <- subset(vars.dat2, wipp$native==1)
+stargazer(vars.dat2, covariate.labels=c("Age","Male","Education","Income","Ideology","Republican", "NM Government Performance", "WIPP Support", "Transportation Risk"), title="Descriptive Statistics: Native Americans", label="tab:descr2")
+```
+
+\begin{table}[!htbp] \centering 
+  \caption{Descriptive Statistics: Native Americans} 
+  \label{tab:descr2} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+Age & 808 & 38.066 & 14.512 & 18 & 85 \\ 
+Male & 815 & 0.421 & 0.494 & 0 & 1 \\ 
+Education & 811 & 3.298 & 1.476 & 1 & 6 \\ 
+Income & 747 & 3.264 & 1.674 & 1 & 6 \\ 
+Ideology & 781 & 4.193 & 1.586 & 1 & 7 \\ 
+Republican & 729 & 0.240 & 0.427 & 0 & 1 \\ 
+NM Government Performance & 722 & 2.224 & 0.546 & 1.000 & 4.000 \\ 
+WIPP Support & 773 & 0.336 & 0.473 & 0 & 1 \\ 
+Transportation Risk & 634 & 3.609 & 1.372 & 1 & 5 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+\newpage
+
+# References {.unnumbered}
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+\vspace*{-0.2in}
+\singlespace
+\noindent
+
